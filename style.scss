@@ -20,12 +20,14 @@ nav {
   padding: 0 1rem;
   height: 70px;
   width: 100%;
-  position: absolute;
-  background-color: rgba(20, 20, 20, 1);
+  z-index: 2;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: rgba(20, 20, 20, 1);
 
+  // MENU
   .main-navigation {
     display: flex;
     flex-flow: row nowrap;
@@ -35,9 +37,9 @@ nav {
 
   // Logo
   .logo {
-    width: 76.8px;
-    height: 43.2px;
-    margin: 0 1rem;
+    width: 115.2px;
+    height: 64.8px;
+    margin: 0 1.5rem;
     background-image: url(img/Netflix-Logo.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -45,27 +47,41 @@ nav {
     overflow: hidden;
   }
   // Nav menu
-  ul {
+  .desktop-menu {
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
 
-  li {
-    display: inline-block;
-
-    a {
-      text-decoration: none;
-      color: hsl(180, 7%, 81%);
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding-left: 1rem;
+    @media screen and (max-width: 768px) {
+      display: none;
     }
   }
-  li:first-child {
-    a {
-      color: white;
+
+  .mobile-menu {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+    }
+  }
+  .menu {
+    li {
+      display: inline-block;
+
+      a {
+        text-decoration: none;
+        color: hsl(180, 7%, 81%);
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding-left: 1rem;
+      }
+    }
+
+    li:first-child {
+      a {
+        color: white;
+      }
     }
   }
 
@@ -82,12 +98,163 @@ nav {
       padding: 0 0.5rem;
     }
 
+    .nav-span {
+      font-size: 0.9rem;
+    }
+
     img {
       width: 32px;
       height: 32px;
     }
     .profile-icon {
       object-fit: cover;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-span {
+        display: none;
+      }
+    }
+  }
+}
+
+// MAIN
+main {
+  // Video Preview Section
+  background-color: hsl(0, 0%, 8%);
+  margin: 0 auto;
+  .preview {
+    height: 56.25vw;
+    z-index: 0;
+    position: relative;
+    background: linear-gradient(
+        0deg,
+        rgba(20, 20, 20, 1) 0%,
+        rgba(255, 255, 255, 0) 50%
+      ),
+      url(img/movie.jpg);
+    background-size: cover;
+
+    img {
+      width: 100%;
+      z-index: -999;
+    }
+  }
+
+  .video-info {
+    position: absolute;
+    z-index: 999;
+    bottom: 25%;
+    width: 40%;
+    left: 4%;
+
+    button {
+      background-color: white;
+      padding: 0 15px;
+      margin-right: 0.5rem;
+      height: 32px;
+      border-radius: 5px;
+      border: none;
+      color: black;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .more-info {
+      background-color: hsla(195, 2%, 56%, 0.8);
+      color: white;
+    }
+    .title-preview {
+      color: rgb(20, 20, 20);
+      text-transform: uppercase;
+      font-size: 2vw;
+    }
+    .sinopse {
+      color: white;
+      text-shadow: 1px 1px black;
+      font-size: 1.4vw;
+      margin: 0.5rem 0;
+    }
+  }
+
+  // Genres => Video Block
+  .genre-section {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 1rem;
+    overflow: scroll;
+    color: white;
+
+    p {
+      margin: 0.7rem 0;
+      font-weight: 600;
+    }
+
+    .genre-list {
+      display: flex;
+      position: relative;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+
+      div[class*="suggestion"] {
+        display: inline-block;
+        padding-right: 5vw;
+
+        img {
+          height: 140px;
+          width: 100px;
+          object-fit: none;
+        }
+      }
+
+      .suggestion-1 {
+        img {
+          object-position: -4px -5px;
+        }
+      }
+      .suggestion-2 {
+        img {
+          object-position: -4px -150px;
+        }
+      }
+      .suggestion-3 {
+        img {
+          object-position: -4px -295px;
+        }
+      }
+      .suggestion-4 {
+        img {
+          object-position: -106px -5px;
+        }
+      }
+      .suggestion-5 {
+        img {
+          object-position: -212px -5px;
+        }
+      }
+      .suggestion-6 {
+        img {
+          object-position: -318px -5px;
+        }
+      }
+      .suggestion-7 {
+        img {
+          object-position: -105px -150px;
+        }
+      }
+      .suggestion-8 {
+        img {
+          object-position: -210px -150px;
+        }
+      }
+      .suggestion-9 {
+        img {
+          object-position: -315px -150px;
+        }
+      }
     }
   }
 }
